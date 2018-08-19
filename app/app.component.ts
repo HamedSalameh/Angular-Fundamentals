@@ -11,14 +11,35 @@ import { Component } from '@angular/core';
 
     </div>
     <div>
-        <input type='text' [value]='name' />
+        <button (click)='changeName()' >Change name</button>
+        <input 
+            type='text'         
+            [ngModel]="name"
+            (ngModelChange)="handleChange($event)">
+
+        <input 
+        type='text'         
+        [(ngModel)]="name"
+        >
+    </div>
+    <div>
+        {{ name }}
     </div>
     `
 })
 export class AppComponent {
   title: string;
-  name: string = 'Hammed';
+  name: string = 'Hamed';
   constructor(){
       this.title = 'Ultimate Angular';
   }
+
+  handleChange(event: any){
+      this.name  = event;
+  }
+
+  changeName() {
+      this.name = 'reset';
+  }
+
 }
