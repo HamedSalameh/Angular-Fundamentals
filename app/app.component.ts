@@ -22,14 +22,14 @@ import { Component } from '@angular/core';
         [(ngModel)]="name"
         >
     </div>
-    <div>
-        {{ name }}
+    <div *ngIf='name.length > 2'>
+        Searching for ...{{ name }}
     </div>
     `
 })
 export class AppComponent {
   title: string;
-  name: string = 'Hamed';
+  name: string = '';
   constructor(){
       this.title = 'Ultimate Angular';
   }
