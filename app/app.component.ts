@@ -44,6 +44,20 @@ interface Passenger {
         <h3>Airline Passengers</h3>
         <ul>
             <li *ngFor='let Passenger of Passengers;let i = index;'>
+                <span 
+                class='status'
+                [class.checked-in]='Passenger.checkedin'
+                ></span>
+                {{ i+1 }} - {{ Passenger.fullname }}
+            </li>            
+        </ul>
+        <br>
+        <ul>
+            <li *ngFor='let Passenger of Passengers;let i = index;'>
+                <span 
+                class='status'
+                [ngClass]="{ 'checked-in': Passenger.checkedin }"
+                ></span>
                 {{ i+1 }} - {{ Passenger.fullname }}
             </li>            
         </ul>
@@ -72,7 +86,13 @@ export class AppComponent {
         id: 2,
         fullname: 'Nada',
         checkedin: false
-    }];
+    },
+    {
+        id: 3,
+        fullname: 'Jenn',
+        checkedin: true
+    }
+];
 
     title: string;
     name: string = '';
