@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 
+interface Child {
+    name: string,
+    age: number
+}
+
 interface Passenger {
     id: number,
     fullname: string,
-    checkedin: boolean
+    checkedin: boolean,
+    checkedInDate? : number | null,
+    children?: Child[] | null
 }
 
 @Component({
@@ -46,30 +53,20 @@ interface Passenger {
             <li *ngFor='let Passenger of Passengers;let i = index;'>
                 <span 
                 class='status'
-                [class.checked-in]='Passenger.checkedin'
-                ></span>
-                {{ i+1 }} - {{ Passenger.fullname }}
-            </li>            
-        </ul>
-        <br>
-        <ul>
-            <li *ngFor='let Passenger of Passengers;let i = index;'>
-                <span 
-                class='status'
                 [ngClass]="{ 'checked-in': Passenger.checkedin }"
                 ></span>
                 {{ i+1 }} - {{ Passenger.fullname }}
+                <p>
+                    {{ Passenger | json }}
+                </p>
+                <div class='date'>
+                    Check in Date: {{ Passenger.checkedInDate ? (Passenger.checkedInDate | date: 'MMMM d, y') : 'Not Checked In' }}
+                </div>
+                <div class='children'>
+                    Children: {{ Passenger?.children?.length || 0 }}
+                </div>
             </li>            
         </ul>
-
-        <h4>With web components </h4>
-            <template ngFor let-passenger let-i="index" [ngForOf]="Passengers">
-                <ul>
-                    <li>
-                        {{ i+1 }} : {{ passenger.fullname }}
-                    </li>
-                </ul>
-            </template>
     </div>
     `
 })
@@ -80,17 +77,20 @@ export class AppComponent {
     Passengers: Passenger[] = [{
         id: 1,
         fullname: 'Hamed',
-        checkedin: false
+        checkedin: false,
+        checkedInDate: null
     },
     {
         id: 2,
         fullname: 'Nada',
-        checkedin: false
+        checkedin: false,
+        checkedInDate: null
     },
     {
         id: 3,
         fullname: 'Jenn',
-        checkedin: true
+        checkedin: true,
+        checkedInDate: 14907420000
     }
 ];
 
