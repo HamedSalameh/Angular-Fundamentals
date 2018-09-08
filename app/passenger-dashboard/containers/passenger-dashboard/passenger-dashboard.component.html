@@ -1,23 +1,8 @@
 <div>
-
     <passenger-count [items]='Passengers'></passenger-count>
-    <passenger-details></passenger-details>
-
-
-    <ul>
-        <li *ngFor='let Passenger of Passengers;let i = index;'>
-            <span class='status' [ngClass]="{ 'checked-in': Passenger.checkedin }"></span>
-            {{ i+1 }} - {{ Passenger.fullname }}
-            <p>
-                {{ Passenger | json }}
-            </p>
-            <div class='date'>
-                Check in Date: {{ Passenger.checkedInDate ? (Passenger.checkedInDate | date: 'MMMM d, y') : 'Not
-                Checked In' }}
-            </div>
-            <div class='children'>
-                Children: {{ Passenger?.children?.length || 0 }}
-            </div>
-        </li>
-    </ul>
+    <passenger-details *ngFor="let passenger of Passengers" 
+        [detail]="passenger" 
+        (remove)='handleRemove($event)'
+        (edit)='handleEdit($event)'
+        ></passenger-details>
 </div>
