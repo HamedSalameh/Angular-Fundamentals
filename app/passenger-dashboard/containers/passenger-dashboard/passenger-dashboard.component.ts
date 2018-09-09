@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Passenger} from '../../models/passenger.interface';
+import { PassengerDashboardService } from '../../passenger-dashboard.service';
+
+import { Passenger } from '../../models/passenger.interface';
 
 @Component({
     selector: 'passenger-dashboard',
@@ -14,41 +16,30 @@ export class PassengerDashboardComponent implements OnInit {
 
     Passengers: Passenger[];
 
-    constructor(){}
+    constructor(private passengerService: PassengerDashboardService) {
 
-    ngOnInit(){
-        this.Passengers = [{
-            id: 1,
-            fullname: 'Hamed',
-            checkedin: false,
-            checkedInDate: null
-        },
-        {
-            id: 2,
-            fullname: 'Nada',
-            checkedin: false,
-            checkedInDate: null
-        },
-        {
-            id: 3,
-            fullname: 'Jenn',
-            checkedin: true,
-            checkedInDate: 14907420000
-        }
-    ];
     }
 
-    handleRemove(event: Passenger){
+    ngOnInit() {
+        this.passengerService
+            .getPassengers()
+            .subscribe((data: Passenger[]) => {
+                this.Passengers = data
+            })
+            ;
+    }
+
+    handleRemove(event: Passenger) {
         this.Passengers = this.Passengers.filter((passenger: Passenger) => {
             // The filter method will return a new array with the items that pass our particular test
             return passenger.id !== event.id
         });
     }
 
-    handleEdit(event: Passenger){
+    handleEdit(event: Passenger) {
 
         this.Passengers = this.Passengers.map((passenger: Passenger) => {
-            if (passenger.id === event.id){
+            if (passenger.id === event.id) {
                 // Object.assign method: In this form, creates a new empty object, then merges the changes from the following object into it
                 passenger = Object.assign({}, passenger, event);
             }

@@ -1,1 +1,22 @@
-{}
+{
+    "Passengers": [
+        {
+            "id": 1,
+            "fullname": "Hamed",
+            "checkedin": false,
+            "checkedInDate": null
+        },
+        {
+            "id": 2,
+            "fullname": "Nada",
+            "checkedin": false,
+            "checkedInDate": null
+        },
+        {
+            "id": 3,
+            "fullname": "Jenn",
+            "checkedin": true,
+            "checkedInDate": 14907420000
+        }
+    ]
+}
