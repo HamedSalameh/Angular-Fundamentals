@@ -38,11 +38,22 @@ export class PassengerDashboardComponent implements OnInit {
     ];
     }
 
-    handleRemove(event: any){
-        console.log(event);
+    handleRemove(event: Passenger){
+        this.Passengers = this.Passengers.filter((passenger: Passenger) => {
+            // The filter method will return a new array with the items that pass our particular test
+            return passenger.id !== event.id
+        });
     }
 
-    handleEdit(event: any){
+    handleEdit(event: Passenger){
+
+        this.Passengers = this.Passengers.map((passenger: Passenger) => {
+            if (passenger.id === event.id){
+                // Object.assign method: In this form, creates a new empty object, then merges the changes from the following object into it
+                passenger = Object.assign({}, passenger, event);
+            }
+            return passenger;
+        });
 
     }
 
