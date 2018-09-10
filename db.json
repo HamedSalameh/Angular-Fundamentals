@@ -4,19 +4,29 @@
       "id": 1,
       "fullname": "Hamed Sal",
       "checkedin": false,
-      "checkedInDate": null
+      "checkedInDate": null,
+      "baggage": ""
     },
     {
       "id": 2,
       "fullname": "Nada Sal",
       "checkedin": false,
-      "checkedInDate": null
+      "checkedInDate": null,
+      "baggage": ""
     },
     {
       "id": 3,
       "fullname": "Jenn",
       "checkedin": true,
-      "checkedInDate": 14907420000
+      "checkedInDate": 1536607418526,
+      "baggage":  ""
+    },
+    {
+      "id": 4,
+      "fullname": "Pam",
+      "checkedin": true,
+      "checkedInDate": 1536607411526,
+      "baggage":  ""
     }
   ]
 }

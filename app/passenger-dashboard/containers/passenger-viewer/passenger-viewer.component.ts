@@ -18,7 +18,7 @@ export class PassengerViewerComponent implements OnInit{
 
     ngOnInit(){
         this.passengerService
-        .getPassenger(1)
+        .getPassenger(3)
         .subscribe((data: Passenger) => {
             this.passenger = data
         });

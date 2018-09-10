@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
     
     <div class=''>
         <passenger-dashboard></passenger-dashboard>
+        <hr>
         <passenger-viewer></passenger-viewer>
     </div>
     
