@@ -8,40 +8,18 @@ import { Component } from '@angular/core';
     template: `
     <div>
         {{ title }}
-
     </div>
-    <div>
-        <button (click)='changeName()' >Change name</button>
-        <input 
-            type='text'         
-            [ngModel]="name"
-            (ngModelChange)="handleChange($event)">
-
-        <input 
-        type='text'         
-        [(ngModel)]="name"
-        >
+    
+    <div class=''>
+        <passenger-dashboard></passenger-dashboard>
+        <passenger-viewer></passenger-viewer>
     </div>
-
-    <template  [ngIf]="name.length > 3">
-        <div>
-            Searching for .. {{ name }}
-        </div>
-    </template>
-
-    <div *ngIf='name.length > 2'>
-        Searching for ...{{ name }}
-    </div>
-
-    <passenger-dashboard></passenger-dashboard>
+    
     `
 })
 
 
 export class AppComponent {
-
-    
-
     title: string;
     name: string = '';
     constructor() {
