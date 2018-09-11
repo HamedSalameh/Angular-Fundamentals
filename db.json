@@ -15,18 +15,18 @@
       "baggage": ""
     },
     {
+      "fullname": "Jenny",
       "id": 3,
-      "fullname": "Jenn",
       "checkedin": true,
-      "checkedInDate": 1536607418526,
-      "baggage":  ""
+      "baggage": "none",
+      "checkedInDate": 1536607418526
     },
     {
       "id": 4,
       "fullname": "Pam",
       "checkedin": true,
       "checkedInDate": 1536607411526,
-      "baggage":  ""
+      "baggage": ""
     }
   ]
 }
