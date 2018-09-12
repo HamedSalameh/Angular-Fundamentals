@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 
 import { Passenger } from '../../models/passenger.interface';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'passenger-dashboard',
@@ -16,7 +17,9 @@ export class PassengerDashboardComponent implements OnInit {
 
     Passengers: Passenger[];
 
-    constructor(private passengerService: PassengerDashboardService) {
+    constructor(
+        private passengerService: PassengerDashboardService,
+        private router: Router) {
 
     }
 
@@ -25,6 +28,10 @@ export class PassengerDashboardComponent implements OnInit {
             .getPassengers()
             .subscribe((data: Passenger[]) => this.Passengers = data, ((err: any) => { console.log(err.json()) })
             );
+    }
+
+    handleView(event: Passenger){
+        this.router.navigate(['/passengers', event.id]);
     }
 
     handleRemove(event: Passenger) {

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { Passenger } from '../../models/passenger.interface';
 
@@ -13,15 +13,22 @@ export class PassengerDetailsComponent {
     detail: Passenger;
 
     @Output()
-    remove: EventEmitter<any> = new EventEmitter();
+    remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     @Output()
-    edit: EventEmitter<any> = new EventEmitter();
+    edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
+    @Output()
+    view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     editing: boolean;
 
     constructor() {
 
+    }
+
+    goToPassenger(): void {
+        this.view.emit(this.detail);
     }
 
     OnNameChange(value: string) {

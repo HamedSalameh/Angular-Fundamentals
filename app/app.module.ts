@@ -27,7 +27,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     PassengerDashboardModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true})
   ],
   bootstrap: [AppComponent]
 })

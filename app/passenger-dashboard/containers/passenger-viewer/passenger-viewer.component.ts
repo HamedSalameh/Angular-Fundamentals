@@ -27,6 +27,10 @@ export class PassengerViewerComponent implements OnInit {
         .subscribe((data: Passenger) => this.passenger = data);
     }
 
+    goBack(): void {
+        this.router.navigate(['/passengers']);
+    }
+
     onUpdatePassenger(event: Passenger) {
         console.log('passenger-viewer.onUpdatePassenger')
         console.log(' > passenger-viewer.onUpdatePassenger : ' + (JSON.stringify(event)));
